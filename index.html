@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProxyClickEvent</title>
+</head>
+
+<body>
+    <div class="a" clickFn="fna">
+        <div class="b" clickFn="fnb">
+            <div class="e" clickFn="fne">点击<b>捣蛋鬼E</b>,会执行
+                <B>e,b,a</B>函数
+            </div>
+            <div class="c" clickFn="fnc">点击<b>捣蛋鬼C,stop</b>,执行执行<b>c</b>函数</div>
+            <div class="f" clickFn="fnf">点击<b>捣蛋鬼F</b>，会执行<b>f,b,a</b>函数</div>
+        </div>
+    </div>
+    <script src="./tmp/index.js"></script>
+    <script>
+        var funs = {
+            fna: function() {
+                console.log("点击a")
+            },
+            fnb: function() {
+                console.log("点击b")
+            },
+            fnc: function(e) {
+                e.__stop = true;
+                console.log("点击c")
+            },
+            fnd: function() {
+                console.log("点击d")
+            },
+            fne: function() {
+                console.log("点击e")
+            },
+            fnf: function() {
+                console.log("点击f")
+            }
+        }
+        window.onload = function() {
+            let proxyEvent = new window.ProxyClickEvent();
+            let clickDoms = document.querySelectorAll("[clickFn]");
+            for (let i = 0; i < clickDoms.length; i++) {
+                let dom = clickDoms[i];
+                let fnStr = clickDoms[i].getAttribute("clickFn");
+                proxyEvent.add(dom, funs[fnStr])
+            }
+        }
+        var b = [{
+            dom: document.querySelector(".b")
+        }];
+        console.log("b", b);
+    </script>
+</body>
+
+</html>
