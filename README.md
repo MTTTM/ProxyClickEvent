@@ -1,7 +1,7 @@
 # ProxyClickEvent
 
 * 事件代理的情况下，支持阻止事件冒泡
-
+* [demo](https://mtttm.github.io/ProxyClickEvent/)
 
 ## 协议
 BSD 3-Clause License

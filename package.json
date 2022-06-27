@@ -1,7 +1,7 @@
 {
     "name": "proxyclickevent",
-    "version": "0.0.3",
-    "description": "document代理点击事件的前提下阻止事件冒泡",
+    "version": "0.0.1",
+    "description": "document代理点击事件的前提下阻止事件冒泡(Support to prevent bubbling in the case of html tag event proxy)",
     "main": "dist/index.js",
     "files": [
         "dist"
